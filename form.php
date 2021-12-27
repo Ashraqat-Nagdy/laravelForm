@@ -12,13 +12,16 @@ class form extends Controller
     }
 
     public function success(Request $request){
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+
         $this->validate($request,[
 
             "name" =>"required|regex:/^[a-zA-Z\s]*$/",
             "email" =>"required|email",
             "password" =>"required|min:6",
             "address" =>"required|min:10",
-            "linkedin" =>"required",
+            "linkedin" =>'required|regex:'.$regex,
+            
             "gender" =>"required"
 
 
